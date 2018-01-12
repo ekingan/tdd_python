@@ -42,9 +42,20 @@ class NewVisitorTest(unittest.TestCase):
 
         # There is still a text box inviting her to add an item, she enters
         # "Use feathers to make a fly"
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Use feathers to make a fly')
+        # She hits enter again and sees the second to-do item on her lists
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+        # The page updates again and she sees both items in her list
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn('1: Buy peacock feathers', [row.text for row in rows])
+        self.assertIn('2: Use feathers to make a fly', [row.text for row in rows])
+
+
         self.fail('Finish the test!')
 
-        # She hits enter again and sees the second to-do item on her lists
 
         # Emily see there is a special url for her list
 
