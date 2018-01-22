@@ -63,7 +63,6 @@ class NewVisitorTest(LiveServerTestCase):
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
 
-        self.fail('Finish the test!')
 
 
         # She visits that url and sees that her to-do list is still there
@@ -111,3 +110,5 @@ class NewVisitorTest(LiveServerTestCase):
 
         # Satisfied they both go to sleep
 
+
+        self.fail('Finish the test!')
